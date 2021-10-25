@@ -44,14 +44,15 @@
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
+        <button class="btn-signup modal-btn" onclick="modalDisplay('block')">
           Je m'inscris !
         </button>
       </div>
 
-      <div class="bground">
+      <div class="bground" id="modal">
         <div class="content">
-          <span class="close"></span>
+          <span onclick="modalDisplay"
+        class="close"></span>
           <div class="modal-body">
             <form
               name="reserve"
