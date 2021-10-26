@@ -13,7 +13,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.getElementsByClassName("close");
-const inputs = document.querySelectorAll('input[type="text"], [type="email"]');
+const inputs = document.querySelectorAll(
+  'input[type="text"], [type="email"], [type="number"]'
+);
 
 // launch modal form
 function launchModal() {
@@ -55,8 +57,11 @@ inputs.forEach((input) => {
       case "email":
         emailChecker(e.target.value);
         break;
+      case "number":
+        numberChecker(e.target.value);
+        break;
       default:
-        nul;
+        null;
     }
   });
 });
@@ -94,7 +99,13 @@ const emailChecker = (value) => {
   } else {
     errorDisplay("email", "", true);
     email = value;
-    console.log(value);
+  }
+};
+
+const numberChecker = (value) => {
+  if (value.length > 0) {
+    errorDisplay("number", "", true);
+    number = value;
   }
 };
 
@@ -102,7 +113,7 @@ const emailChecker = (value) => {
 const subForm = document.querySelector("form");
 
 subForm.addEventListener("submit", (e) => {
-  if (first && last && email) {
+  if (first && last && email && number) {
     const globalData = {
       first: first,
       last: last,
