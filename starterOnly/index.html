@@ -61,7 +61,7 @@
               onsubmit="return validate();"
             >
               <div
-                class="formData">
+                class="first-formData">
                 <label>Prénom</label><br>
                 <input
                   class="text-control"
@@ -70,9 +70,10 @@
                   name="first"
                   minlength="2"
                 /><br>
+                <span></span>
               </div>
               <div
-                class="formData">
+                class="last-formData">
                 <label>Nom</label><br>
                 <input
                   class="text-control"
@@ -80,19 +81,21 @@
                   id="last"
                   name="last"
                 /><br>
+                <span></span>
               </div>
               <div
-                class="formData">
+                class="email-formData">
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
                 /><br>
+                <span></span>
               </div>
               <div
-                class="formData">
+                class="date-formData">
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -102,13 +105,13 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="number-formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Dans quelles villes ?</p>
               <div
-                class="formData">
+                class="checkbox-formData">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -178,7 +181,7 @@
               </div>
 
               <div
-                class="formData">
+                class="cgv-formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -201,7 +204,7 @@
                 class="btn-submit"
                 type="submit"
                 class="button"
-                value="C'est parti"
+                value="C'est parti !"
               />
             </form>
           </div>
