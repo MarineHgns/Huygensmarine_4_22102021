@@ -51,7 +51,7 @@
 
       <div class="bground" id="modal">
         <div class="content">
-          <span onclick="modalDisplay"
+          <span onclick="modalDisplay('none')"
         class="close"></span>
           <div class="modal-body">
             <form
@@ -68,7 +68,7 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                  minlength="2" required
                 /><br>
                 <span></span>
               </div>
@@ -79,7 +79,7 @@
                   class="text-control"
                   type="text"
                   id="last"
-                  name="last"
+                  name="last" required
                 /><br>
                 <span></span>
               </div>
@@ -90,7 +90,7 @@
                   class="text-control"
                   type="text"
                   id="email"
-                  name="email"
+                  name="email" required
                 /><br>
                 <span></span>
               </div>
@@ -101,23 +101,23 @@
                   class="text-control"
                   type="date"
                   id="birthdate"
-                  name="birthdate"
+                  name="birthdate" required
                 /><br>
               </div>
               <div
                 class="number-formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
               </div>
-              <p class="text-label">Dans quelles villes ?</p>
+              <p class="text-label">Dans quelle ville ?</p>
               <div
-                class="checkbox-formData">
+                class="checkbox-formData" id="radioCity">
                 <input
                   class="checkbox-input"
                   type="radio"
                   id="location1"
                   name="location"
-                  value="New York"
+                  value="New York" checked
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -178,6 +178,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span class="radio-error" style="display: none;">Merci de séléctionner une ville</span>
               </div>
 
               <div
@@ -186,31 +187,42 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
+                  checked required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" name="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et j'accepte les conditions d'utilisation.
                 </label>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
+                <label class="checkbox2-label" name="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu lors des prochains évènements.
                 </label>
                 <br>
               </div>
               <input
-                class="btn-submit"
+                class="btn-submit buttonthank"
                 type="submit"
                 class="button"
                 value="C'est parti !"
               />
             </form>
+
           </div>
         </div>
       </div>
-    </main>
+<div class="bgroundthank">
+  <div class="content-thank">
+    <span class="close" id="close-thanks"></span>
+    <div class="body-thank">
+      <span class="text-thank">Merci ! <br>
+      Votre réservation a bien été reçue.</span>
+    </div>
+      <input type="submit" class="btn-submit buttonthank" value="Fermer"/>
+  </div>
+</div>
+</main>
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2020, GameOn Inc.

@@ -12,39 +12,24 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeBtn = document.getElementsByClassName("close");
+const modal = document.getElementById("modal");
+const modalthank = document.querySelector(".bgroundthank");
+// Form - Sélection de tout les inputs de type texte, email & number
 const inputs = document.querySelectorAll(
-  'input[type="text"], [type="email"], [type="number"]'
+  'input[type="text"], [type="email"], [type="number"], [type="radio"], [type="checkbox"]'
 );
 
-// launch modal form
+// Fonction ouvrir / fermer la modal des 2 btns
+function modalDisplay(displayStyle) {
+  modal.style.display = displayStyle;
+}
 function launchModal() {
-  modalbg.style.display = "block";
+  modal.style.display = "block";
 }
 
-// Close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-}
-closeBtn[0].addEventListener("click", closeModal);
-
-// launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-//fonction si erreur
-const errorDisplay = (tag, message, valid) => {
-  const formData = document.querySelector("." + tag + "-formData");
-  const span = document.querySelector("." + tag + "-formData > span");
 
-  if (!valid) {
-    formData.classList.add("error");
-    span.textContent = message;
-  } else {
-    formData.classList.remove("error");
-    span.textContent = message;
-  }
-};
-
-// Form
+// Form - création d'un évènement pour tout les inputs
 inputs.forEach((input) => {
   input.addEventListener("input", (e) => {
     switch (e.target.id) {
@@ -60,13 +45,33 @@ inputs.forEach((input) => {
       case "number":
         numberChecker(e.target.value);
         break;
+      case "radio":
+        radioChecker(e.target.value);
+        break;
+      case "checkbox":
+        checkboxChecker(e.target.value);
+        break;
       default:
         null;
     }
   });
 });
 
-// fonction Prénom et Nom: minimum 2 caractères.
+// Form - Fonction si erreur
+const errorDisplay = (tag, message, valid) => {
+  const formData = document.querySelector("." + tag + "-formData");
+  const span = document.querySelector("." + tag + "-formData > span");
+
+  if (!valid) {
+    formData.classList.add("error");
+    span.textContent = message;
+  } else {
+    formData.classList.remove("error");
+    span.textContent = message;
+  }
+};
+
+// Form - Fonction Prénom et Nom: minimum 2 caractères.
 const firstChecker = (value) => {
   if (value.length < 2) {
     errorDisplay("first", "Le prénom doit faire plus de 2 caractères");
@@ -87,7 +92,7 @@ const lastChecker = (value) => {
   }
 };
 
-// fonction Email: valide
+// Form - Fonction Email: valide
 const emailChecker = (value) => {
   if (
     !value.match(
@@ -102,6 +107,7 @@ const emailChecker = (value) => {
   }
 };
 
+// Form - Fonction nombre tournois (nombres uniquement)
 const numberChecker = (value) => {
   if (value.length > 0) {
     errorDisplay("number", "", true);
@@ -109,19 +115,45 @@ const numberChecker = (value) => {
   }
 };
 
-// fonction submit
-const subForm = document.querySelector("form");
+// Form - Fonction radio (obligatoire)
+function radioChecker() {
+  const $location = document.querySelectorAll("#radioCity .checkbox-input");
+  const $radioNotValid = document.querySelector("radio-error");
+  let locationRadioInvalid = false;
 
-subForm.addEventListener("submit", (e) => {
-  if (first && last && email && number) {
-    const globalData = {
-      first: first,
-      last: last,
-      email: email,
-    };
-  } else {
-    alert("Veuillez remplir correctement les champs");
+  for (let i = 0; i < $location.length; i++) {
+    if ($location[i].checked) {
+      locationRadioInvalid = true;
+    } else {
+      $radioNotValid.style.display = "block";
+      return locationRadioInvalid;
+    }
   }
+}
 
-  console.log(test);
-});
+// Form - Fonction CGV (obligatoire)
+function checkboxChecker(cgv) {
+  if (cgv.checkbox1.checked == false) {
+    alert("Merci de confirmer les CGV");
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// Form - Fontion ouverture page remerciement
+
+function launchThank() {
+  modalthank.style.display = "block";
+}
+
+function validate() {
+  launchThank;
+}
+
+function validate() {
+  thankBtn.forEach((btn) => btn.addEventListener("click", launchThank));
+  function launchThank() {
+    thankBg.style.display = "block";
+  }
+}
