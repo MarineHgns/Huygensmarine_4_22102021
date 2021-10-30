@@ -37,8 +37,8 @@
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert
             aux réservations... Places limitées !
           </p>
-          <button class="btn-signup modal-btn">
-            je m'inscris
+          <button class="btn-signup modal-btn" onclick="modalDisplay('block')">
+            Je m'inscris !
           </button>
         </div>
         <div class="hero-img">
@@ -58,7 +58,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              id="signForm"
             >
               <div
                 class="first-formData">
@@ -101,13 +101,14 @@
                   class="text-control"
                   type="date"
                   id="birthdate"
-                  name="birthdate" required
+                  name="birthdate"
+                  max="2008-12-31" min="1900-12-31" 
                 /><br>
               </div>
               <div
                 class="number-formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Dans quelle ville ?</p>
               <div
@@ -117,7 +118,7 @@
                   type="radio"
                   id="location1"
                   name="location"
-                  value="New York" checked
+                  value="New York"
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -187,7 +188,7 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked required
+                  checked 
                 />
                 <label class="checkbox2-label" name="checkbox1">
                   <span class="checkbox-icon"></span>
@@ -204,6 +205,7 @@
               <input
                 class="btn-submit buttonthank"
                 type="submit"
+                id="register"
                 class="button"
                 value="C'est parti !"
               />
@@ -219,7 +221,7 @@
       <span class="text-thank">Merci ! <br>
       Votre réservation a bien été reçue.</span>
     </div>
-      <input type="submit" class="btn-submit buttonthank" value="Fermer"/>
+      <input type="submit" class="btnsubmit button-thank" value="Fermer"/>
   </div>
 </div>
 </main>

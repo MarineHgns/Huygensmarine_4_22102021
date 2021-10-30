@@ -11,15 +11,11 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 const modal = document.getElementById("modal");
-const modalthank = document.querySelector(".bgroundthank");
-// Form - Sélection de tout les inputs de type texte, email & number
-const inputs = document.querySelectorAll(
-  'input[type="text"], [type="email"], [type="number"], [type="radio"], [type="checkbox"]'
-);
 
 // Fonction ouvrir / fermer la modal des 2 btns
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 function modalDisplay(displayStyle) {
   modal.style.display = displayStyle;
 }
@@ -27,35 +23,11 @@ function launchModal() {
   modal.style.display = "block";
 }
 
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// Form - création d'un évènement pour tout les inputs
-inputs.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    switch (e.target.id) {
-      case "first":
-        firstChecker(e.target.value);
-        break;
-      case "last":
-        lastChecker(e.target.value);
-        break;
-      case "email":
-        emailChecker(e.target.value);
-        break;
-      case "number":
-        numberChecker(e.target.value);
-        break;
-      case "radio":
-        radioChecker(e.target.value);
-        break;
-      case "checkbox":
-        checkboxChecker(e.target.value);
-        break;
-      default:
-        null;
-    }
-  });
-});
+// Form - Sélection de tout les inputs de type texte, email & number
+const form = document.querySelector("form");
+const inputs = document.querySelectorAll(
+  'input[type="text"], [type="email"], [type="number"], [type="radio"], [type="checkbox"], [type="date"]'
+);
 
 // Form - Fonction si erreur
 const errorDisplay = (tag, message, valid) => {
@@ -107,53 +79,124 @@ const emailChecker = (value) => {
   }
 };
 
-// Form - Fonction nombre tournois (nombres uniquement)
-const numberChecker = (value) => {
-  if (value.length > 0) {
-    errorDisplay("number", "", true);
-    number = value;
+// Form - Fonction Birthdate: valide
+const birthdateChecker = (value) => {
+  if (!value.match(/(19\d\d|20[0-3])(-\d\d){2}/) || (value = null)) {
+    errorDisplay("birthdate", "la date de naissance est incorrecte");
+    birthdate = null;
+  } else {
+    errorDisplay("birthdate", "", true);
+    birthdate = value;
   }
 };
 
-// Form - Fonction radio (obligatoire)
-function radioChecker() {
-  const $location = document.querySelectorAll("#radioCity .checkbox-input");
-  const $radioNotValid = document.querySelector("radio-error");
-  let locationRadioInvalid = false;
+// Form - Fonction nombre tournois (nombres uniquement)
+const numberChecker = (value) => {
+  if (value.length >= 0) {
+    errorDisplay("number", "", true);
+    number = value;
+  } else {
+    errorDisplay("number", "Merci d'indiquer un nombre ou zéro.", false);
+  }
+};
 
+// Form - Fonction location tournois (radio) (obligatoire)
+const $location = document.querySelectorAll("input[name = 'location']");
+const $radioNotValid = document.querySelector("radio-error");
+let locationRadioValid = false;
+const radioChecker = (value) => {
   for (let i = 0; i < $location.length; i++) {
     if ($location[i].checked) {
-      locationRadioInvalid = true;
+      locationRadioValid = true;
     } else {
-      $radioNotValid.style.display = "block";
-      return locationRadioInvalid;
+      return locationRadioValid;
     }
   }
-}
+};
 
 // Form - Fonction CGV (obligatoire)
-function checkboxChecker(cgv) {
+const cgv = document.getElementsByClassName(".cgv-formData");
+const checkboxChecker = (value) => {
   if (cgv.checkbox1.checked == false) {
     alert("Merci de confirmer les CGV");
     return false;
   } else {
     return true;
   }
-}
+};
 
-// Form - Fontion ouverture page remerciement
+// Form - création d'un évènement pour tout les inputs
+inputs.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    switch (e.target.id) {
+      case "first":
+        firstChecker(e.target.value);
+        break;
+      case "last":
+        lastChecker(e.target.value);
+        break;
+      case "email":
+        emailChecker(e.target.value);
+        break;
+      case "birthdate":
+        birthdateChecker(e.target.value);
+        break;
+      case "number":
+        numberChecker(e.target.value);
+        break;
+      case "radio":
+        radioChecker(e.target.value);
+        break;
+      case "checkbox":
+        checkboxChecker(e.target.value);
+        break;
+      default:
+        null;
+    }
+  });
+  console.log(inputs);
+});
 
-function launchThank() {
-  modalthank.style.display = "block";
-}
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-function validate() {
-  launchThank;
-}
+  if (
+    first == true &&
+    last == true &&
+    email == true &&
+    birthdate == true &&
+    number == true &&
+    radio == true &&
+    checkbox == true
+  ) {
+    const data = {
+      first,
+      last,
+      email,
+      birdthdate,
+      number,
+      radio,
+      checkbox,
+    };
+    console.log(data);
 
-function validate() {
-  thankBtn.forEach((btn) => btn.addEventListener("click", launchThank));
-  function launchThank() {
-    thankBg.style.display = "block";
+    inputs.forEach((input) => (input.value = ""));
+
+    first = null;
+    last = null;
+    email = null;
+    birdthdate = null;
+    number = null;
+    radio = null;
+    checkbox = null;
+
+    alert("Inscription validée !");
+  } else {
+    alert("veuillez remplir correctement les champs");
   }
-}
+});
+
+// // Stocker saisie Local Storage
+// localStorage.setItem("firstName", document.querySelector("#first").value);
+// localStorage.setItem("lastName", document.querySelector("#last").value);
+// localStorage.setItem("Location Tournament", $location);
