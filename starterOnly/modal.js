@@ -80,42 +80,46 @@ const emailChecker = (value) => {
 };
 
 // Form - Fonction Birthdate: valide
-const birthdateChecker = (value) => {
-  if (!value.match(/(19\d\d|20[0-3])(-\d\d){2}/) || (value = null)) {
-    errorDisplay("birthdate", "la date de naissance est incorrecte");
-    birthdate = null;
+const dateChecker = (value) => {
+  if (!value.match(/[^0-9]/) || (value = null)) {
+    errorDisplay("date", "La date de naissance est incorrecte");
+    ate = null;
   } else {
-    errorDisplay("birthdate", "", true);
-    birthdate = value;
+    errorDisplay("date", "", true);
+    date = value;
   }
 };
 
 // Form - Fonction nombre tournois (nombres uniquement)
+
 const numberChecker = (value) => {
-  if (value.length >= 0) {
+  if (!value.match(/^[0-9]+$/)) {
+    errorDisplay("number", "Merci d'indiquer un nombre ou zéro.");
+    number = null;
+  } else {
     errorDisplay("number", "", true);
     number = value;
-  } else {
-    errorDisplay("number", "Merci d'indiquer un nombre ou zéro.", false);
   }
 };
 
 // Form - Fonction location tournois (radio) (obligatoire)
-const $location = document.querySelectorAll("input[name = 'location']");
-const $radioNotValid = document.querySelector("radio-error");
+const $location = document.querySelectorAll("input[name='location']");
 let locationRadioValid = false;
+
 const radioChecker = (value) => {
   for (let i = 0; i < $location.length; i++) {
     if ($location[i].checked) {
       locationRadioValid = true;
+      errorDisplay("radio", "", true);
     } else {
-      return locationRadioValid;
+      errorDisplay("radio", "Merci d'indiquer une ville");
+      radio = null;
     }
   }
 };
 
 // Form - Fonction CGV (obligatoire)
-const cgv = document.getElementsByClassName(".cgv-formData");
+const cgv = document.getElementsByClassName(".checkbox-input");
 const checkboxChecker = (value) => {
   if (cgv.checkbox1.checked == false) {
     alert("Merci de confirmer les CGV");
@@ -138,8 +142,8 @@ inputs.forEach((input) => {
       case "email":
         emailChecker(e.target.value);
         break;
-      case "birthdate":
-        birthdateChecker(e.target.value);
+      case "date":
+        dateChecker(e.target.value);
         break;
       case "number":
         numberChecker(e.target.value);
@@ -164,7 +168,7 @@ form.addEventListener("submit", (e) => {
     first == true &&
     last == true &&
     email == true &&
-    birthdate == true &&
+    date == true &&
     number == true &&
     radio == true &&
     checkbox == true
@@ -173,7 +177,7 @@ form.addEventListener("submit", (e) => {
       first,
       last,
       email,
-      birdthdate,
+      date,
       number,
       radio,
       checkbox,
@@ -185,7 +189,7 @@ form.addEventListener("submit", (e) => {
     first = null;
     last = null;
     email = null;
-    birdthdate = null;
+    date = null;
     number = null;
     radio = null;
     checkbox = null;
@@ -195,6 +199,18 @@ form.addEventListener("submit", (e) => {
     alert("veuillez remplir correctement les champs");
   }
 });
+
+//Modal Remerciement
+const modalthank = document.querySelector(".bgroundthank");
+const thankBtn = document.querySelectorAll(".buttonthank");
+
+function launchThank() {
+  modalthank.style.display = "block";
+}
+
+function validate() {
+  thankBtn.forEach((btn) => btn.addEventListener("click", launchThank));
+}
 
 // // Stocker saisie Local Storage
 // localStorage.setItem("firstName", document.querySelector("#first").value);

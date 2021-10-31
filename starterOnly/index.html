@@ -59,6 +59,7 @@
               action="index.html"
               method="get"
               id="signForm"
+              onsubmit="return validate();" 
             >
               <div
                 class="first-formData">
@@ -100,15 +101,17 @@
                 <input
                   class="text-control"
                   type="date"
-                  id="birthdate"
-                  name="birthdate"
+                  id="date"
+                  name="date"
                   max="2008-12-31" min="1900-12-31" 
                 /><br>
+                <span></span>
               </div>
               <div
                 class="number-formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="number" name="number" min="0" max="99">
+                <span></span>
               </div>
               <p class="text-label">Dans quelle ville ?</p>
               <div
@@ -179,7 +182,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <span class="radio-error" style="display: none;">Merci de séléctionner une ville</span>
+                <span></span>
               </div>
 
               <div
@@ -188,7 +191,7 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked 
+                  checked
                 />
                 <label class="checkbox2-label" name="checkbox1">
                   <span class="checkbox-icon"></span>
