@@ -103,13 +103,13 @@
                   name="date"
                   max="2008-12-31" min="1900-12-31" 
                 /><br>
-                <span></span>
+                <span class="dateError error" style="display: none;">La date de naissance est incorrecte</span>
               </div>
               <div
                 class="number-formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="number" name="number" min="0" max="99">
-                <span></span>
+                <span class="numberError error" style="display: none;">Merci d'indiquer un chiffre ou zéro.</span>
               </div>
               <p class="text-label">Dans quelle ville ?</p>
               <div
@@ -188,13 +188,14 @@
                 <input
                   class="checkbox-input"
                   type="checkbox"
-                   id="checkbox" name="checkbox1-cgv"
+                   id="cgvcase" name="cgvcase"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1">
+                <label class="checkbox2-label" for="cgvcase">
                   <span class="checkbox-icon"></span>
                   J'ai lu et j'accepte les conditions d'utilisation.
                 </label>
+                <span class="cgvError error" style="display: none;">Merci d'accepter les CGV.</span>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
