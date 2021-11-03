@@ -55,11 +55,10 @@
         class="close"></span>
           <div class="modal-body">
             <form
-              name="reserve"
+              name="signForm"
               action="index.html"
               method="get"
-              id="signForm"
-              onsubmit="return validate();" 
+              id="signForm" 
             >
               <div
                 class="first-formData">
@@ -68,10 +67,9 @@
                   class="text-control"
                   type="text"
                   id="first"
-                  name="first"
-                  minlength="2" required
+                  name="first" required
                 /><br>
-                <span></span>
+                <span class="firstError error" style="display: none;">Le prénom doit faire plus de 2 caractères.</span>
               </div>
               <div
                 class="last-formData">
@@ -82,7 +80,7 @@
                   id="last"
                   name="last" required
                 /><br>
-                <span></span>
+                <span class="lastError error" style="display: none;">Le nom doit faire plus de 2 caractères.</span>
               </div>
               <div
                 class="email-formData">
@@ -93,7 +91,7 @@
                   id="email"
                   name="email" required
                 /><br>
-                <span></span>
+                <span class="emailError error" style="display: none;">L'adresse mail est incorrecte</span>
               </div>
               <div
                 class="date-formData">
@@ -115,7 +113,7 @@
               </div>
               <p class="text-label">Dans quelle ville ?</p>
               <div
-                class="checkbox-formData" id="radioCity">
+                class="radio-formData" id="radio">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -182,24 +180,24 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <span></span>
+                <span class="locationError error" style="display: none;">Merci d'indiquer une ville.</span>
               </div>
 
               <div
-                class="cgv-formData">
+                class="checkbox-formData" id="checkbox"> 
                 <input
                   class="checkbox-input"
                   type="checkbox"
-                  id="checkbox1"
+                   id="checkbox" name="checkbox1-cgv"
                   checked
                 />
-                <label class="checkbox2-label" name="checkbox1">
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et j'accepte les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" name="checkbox2">
+                <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2" />
+                <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu lors des prochains évènements.
                 </label>

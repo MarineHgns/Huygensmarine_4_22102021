@@ -630,19 +630,29 @@ footer {
 
 /* Connecté Js
 /* Form */
-.error span {
-  color: rgba(255, 0, 0, 0.671);
-  font-size: 1em;
-  font-weight: 650;
-  line-height: 2.4em;
-}
-
-.error input {
-  color: red;
-  border: 2px solid red;
-}
 
 .bgroundthank {
   display: none;
   position: fixed;
+}
+
+.content-thank {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.error {
+  color: rgba(255, 0, 0, 0.671);
+  font-size: 1em;
+  font-weight: 650;
+  line-height: 2.4em;
 }
