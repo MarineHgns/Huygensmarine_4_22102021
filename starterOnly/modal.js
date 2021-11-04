@@ -22,6 +22,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function modalDisplay(displayStyle) {
   modal.style.display = displayStyle;
 }
+
 function launchModal() {
   modal.style.display = "block";
 }

@@ -535,6 +535,20 @@ footer {
   .topnav a {
     font-size: 1em;
   }
+  .bgroundthank {
+    margin-top: 1em;
+    padding-bottom: 70em;
+  }
+
+  .content-thank {
+    padding-left: 0.8em;
+    padding-right: 0.8em;
+    opacity: 1;
+  }
+
+  .button-thank {
+    left: 3em;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -632,22 +646,42 @@ footer {
 /* Form */
 
 .bgroundthank {
-  display: none;
-  position: fixed;
+  position: absolute;
+  top: 8.5%;
+  margin-left: 0%;
+  margin-right: 0%;
+  width: 100%;
+  height: 100%;
+  max-height: 850px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #070707;
+  border-radius: 10px;
+  left: 0%;
+  overflow: hidden;
 }
 
 .content-thank {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 55%;
+  text-align: center;
+  font-size: 1.9em;
+  font-weight: 400;
+}
+
+.button-thank {
+  position: absolute;
+  bottom: -320%;
+  margin: 0 20% 0 25%;
+  padding: 3% 13% 3% 13%;
+  right: 2em;
+}
+
+#close-thanks {
+  position: absolute;
+  top: -180%;
+  right: 1%;
 }
 
 .error {
