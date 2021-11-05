@@ -245,33 +245,6 @@ input {
   height: 48px;
 }
 
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
-
-input[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: red;
-}
-
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -480,6 +453,38 @@ footer {
   font-weight: bolder;
 }
 
+/* Form */
+.error {
+  color: rgba(255, 0, 0, 0.671);
+  font-size: 1em;
+  font-weight: 650;
+  line-height: 2.4em;
+}
+
+/* modal thanks sign up */
+
+.bgroundthank {
+  display: none;
+  position: absolute;
+  top: 8.5%;
+  margin-left: 0%;
+  margin-right: 0%;
+  height: 100%;
+  max-height: 1550px;
+  width: 100%;
+  max-width: 2550px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #070707;
+  border-radius: 10px;
+  left: 0%;
+  overflow: hidden;
+}
+
+.content-thank {
+  color: rgb(255, 255, 255);
+}
+
 /* Media screen */
 @media screen and (min-width: 375px) {
   .hero-text {
@@ -514,6 +519,8 @@ footer {
     float: right;
     display: block;
     margin-top: -15px;
+    font-size: 150%;
+    color: #fe142f;
   }
 
   .topnav.responsive {
@@ -534,20 +541,6 @@ footer {
   }
   .topnav a {
     font-size: 1em;
-  }
-  .bgroundthank {
-    margin-top: 1em;
-    padding-bottom: 70em;
-  }
-
-  .content-thank {
-    padding-left: 0.8em;
-    padding-right: 0.8em;
-    opacity: 1;
-  }
-
-  .button-thank {
-    left: 3em;
   }
 }
 
@@ -580,6 +573,30 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  .bgroundthank {
+    z-index: 2;
+    margin-top: -4em;
+    padding-bottom: 72em;
+  }
+
+  .body-thank {
+    position: relative;
+    top: 12em;
+    font-size: 130%;
+    text-align: center;
+    margin: 1em;
+  }
+  .close_thanks {
+    position: relative;
+    right: -95%;
+    font-size: 150%;
+    font-weight: 450;
+  }
+
+  .button-thank {
+    position: relative;
+    top: 36em;
+  }
 }
 
 @media screen and (min-width: 801px) {
@@ -610,7 +627,33 @@ footer {
   .bground {
     z-index: 1;
     left: 0;
-    top: 3%;
+  }
+  .bgroundthank {
+    z-index: 2;
+    margin-top: -4em;
+    padding-bottom: 56em;
+  }
+
+  .body-thank {
+    position: relative;
+    top: 8em;
+    font-size: 190%;
+    text-align: center;
+    margin: 1em;
+  }
+  .close_thanks {
+    position: relative;
+    right: -98%;
+    font-size: 150%;
+    font-weight: 450;
+  }
+
+  .button-thank {
+    position: relative;
+    top: 28em;
+    left: 0.3em;
+    font-size: 1em;
+    padding: 1% 5%;
   }
 }
 
@@ -625,12 +668,24 @@ footer {
     font-size: 3.6em;
   }
   .btn-signup {
-    top: 14em;
     left: -3.8em;
     padding: 1.2em 2.4em;
   }
+  .button-thank {
+    left: 0.4em;
+    top: 23em;
+    padding: 1% 7%;
+  }
+  .bgroundthank {
+    margin-top: -4.4em;
+  }
 }
 
+@media screen and (min-width: 1800px) {
+  .button-thank {
+    top: 30em;
+  }
+}
 /* Animation */
 @keyframes modalopen {
   from {
@@ -640,53 +695,4 @@ footer {
   to {
     opacity: 1;
   }
-}
-
-/* Connecté Js
-/* Form */
-
-.bgroundthank {
-  position: absolute;
-  top: 8.5%;
-  margin-left: 0%;
-  margin-right: 0%;
-  width: 100%;
-  height: 100%;
-  max-height: 850px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #070707;
-  border-radius: 10px;
-  left: 0%;
-  overflow: hidden;
-}
-
-.content-thank {
-  color: rgb(255, 255, 255);
-  position: absolute;
-  bottom: 55%;
-  text-align: center;
-  font-size: 1.9em;
-  font-weight: 400;
-}
-
-.button-thank {
-  position: absolute;
-  bottom: -320%;
-  margin: 0 20% 0 25%;
-  padding: 3% 13% 3% 13%;
-  right: 2em;
-}
-
-#close-thanks {
-  position: absolute;
-  top: -180%;
-  right: 1%;
-}
-
-.error {
-  color: rgba(255, 0, 0, 0.671);
-  font-size: 1em;
-  font-weight: 650;
-  line-height: 2.4em;
 }
