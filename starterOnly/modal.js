@@ -12,9 +12,9 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modal = document.getElementById("modal");
-//
-const formData = document.querySelectorAll(".formData");
 const $signForm = document.querySelector("#signForm");
+const modalBtnThank = document.querySelectorAll("closeThk");
+const modalThank = document.getElementById("modalThank");
 
 // Fonction ouvrir / fermer la modal des 2 btns
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -26,8 +26,16 @@ function modalDisplay(displayStyle) {
 function launchModal() {
   modal.style.display = "block";
 }
+
+// Fermer modal "Thanks"
+modalBtnThank.forEach((btn) => btn.addEventListener("click", closeModalThank));
+function closeModalThank() {
+  modalThank.style.display = "none";
+}
+
 ///////////////////////////////////////////////////////////////
-// Prénom
+/////////////////////////// Form /////////////////////////////
+// Prénom - 2 caractères minimum
 function firstChecker() {
   const $firstError = document.querySelector(".firstError");
 
@@ -37,7 +45,7 @@ function firstChecker() {
     return firstChecker;
   }
 }
-// Nom
+// Nom - 2 caractères minimum
 function lastChecker() {
   const $lastError = document.querySelector(".lastError");
 
@@ -48,7 +56,7 @@ function lastChecker() {
   }
 }
 
-// Email
+// Email - Non null + regEx contrôle
 function emailChecker() {
   let regexEmail =
     /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
@@ -60,7 +68,7 @@ function emailChecker() {
     return emailChecker;
   }
 }
-// Date
+// Date de naissance - Non null
 function dateChecker() {
   const date = document.getElementById("date").value;
   const $dateError = document.querySelector(".dateError");
@@ -73,7 +81,7 @@ function dateChecker() {
   }
 }
 
-// Nombre tournois
+// Nombre tournois - Non null
 function numberChecker() {
   const number = document.getElementById("number").value;
   const $numberError = document.querySelector(".numberError");
@@ -84,7 +92,7 @@ function numberChecker() {
   }
 }
 
-// Radio
+// Location - une seule uniquement (radio) et obligatoire
 function locationChecker() {
   const $locationRadio = document.querySelectorAll("#radio .checkbox-input");
   const $locationError = document.querySelector(".locationError");
@@ -98,7 +106,7 @@ function locationChecker() {
   }
 }
 
-// Cgv
+// Cgv - cochée d'office (peut être décochée) -> doit obligatoirement être cochée
 
 const cgv = document.getElementById("cgvcase");
 const $cgvError = document.querySelector(".cgvError");
@@ -110,7 +118,7 @@ function cgvChecker() {
   }
 }
 
-// Submit
+// Submit du formulaire, si ok ouvre la modal "Thanks" sinon reste sur la page en gardant le contenu du formulaire
 const modalthank = document.querySelector(".bgroundthank");
 const thankBtn = document.querySelectorAll(".buttonthank");
 
