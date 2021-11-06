@@ -16,7 +16,7 @@ const $signForm = document.querySelector("#signForm");
 const modalBtnThank = document.querySelectorAll("closeThk");
 const modalThank = document.getElementById("modalThank");
 
-// Fonction ouvrir / fermer la modal des 2 btns
+// Fonction ouvrir / fermer la modal (inscription) 2 btns
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 function modalDisplay(displayStyle) {
