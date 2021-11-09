@@ -52,10 +52,12 @@ function closeModalThank() {
 // Prénom : Nom - 2 caractères minimum
 function nameChecker(classErreur, input) {
   const $nameError = document.querySelector(classErreur);
-
+  const $inputError = document.getElementById(input);
   if (document.getElementById(input).value.length < 2) {
     $nameError.style.display = "block";
+    $inputError.style.border = "2px solid red";
   } else {
+    $inputError.style.border = "2px solid green";
     $nameError.style.display = "none";
     return nameChecker;
   }
@@ -69,8 +71,10 @@ function emailChecker() {
   const $emailError = document.querySelector(".emailError");
   if (email.value.trim() === "" || regexEmail.test(email.value) === false) {
     $emailError.style.display = "block";
+    email.style.border = "2px solid red";
   } else {
     $emailError.style.display = "none";
+    email.style.border = "2px solid green";
     return emailChecker;
   }
 }
@@ -78,12 +82,14 @@ function emailChecker() {
 function dateChecker() {
   const date = document.getElementById("date").value;
   const $dateError = document.querySelector(".dateError");
-
+  const $dateBorderError = document.getElementById("date");
   if (date === null || date === "") {
     $dateError.style.display = "block";
+    $dateBorderError.style.border = "2px solid red";
     return false;
   } else {
     $dateError.style.display = "none";
+    $dateBorderError.style.border = "2px solid green";
     return dateChecker;
   }
 }
@@ -92,10 +98,13 @@ function dateChecker() {
 function numberChecker() {
   const number = document.getElementById("number").value;
   const $numberError = document.querySelector(".numberError");
+  const $numberBorderError = document.getElementById("number");
   if (number === "") {
     $numberError.style.display = "block";
+    $numberBorderError.style.border = "2px solid red";
   } else {
     $numberError.style.display = "none";
+    $numberBorderError.style.border = "2px solid green";
     return numberChecker;
   }
 }
